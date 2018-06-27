@@ -22,6 +22,7 @@
      var dogbreed = ["Maltese","German Shepherd","bulldog","collie","chihuahua","poodle","beagle"];
 renderButtons();
 $("button").on("click", function() {
+      $("#dogs").empty(); 
       var breed = $(this).attr("data-name");
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         breed + "&api_key=dc6zaTOxFJmzC&limit=10";
