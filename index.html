@@ -43,12 +43,12 @@ $("button").on("click", function() {
 
             var dogImage = $("<img>");
             // dogImage.attr("src", "data-animate =" + results[i].images.fixed_height.url + "data-still=" + results[i].images.fixed_height_still.url);
-            dogImage.attr("src", results[i].images.fixed_height.url);
-            dogImage.attr({'data-state': "animate"});
-            dogImage.attr({'data-animate' :results[i].images.fixed_height.url});
-            dogImage.attr({'data-state' : "still"});  
-            dogImage.attr({'data-still' : results[i].images.fixed_height_still.url});
-            dogImage.attr("class=gif");
+            dogImage.attr("src", results[i].images.fixed_height_still.url);
+            dogImage.attr("data-state", "animate");
+            dogImage.attr("data-animate", results[i].images.fixed_height.url);
+            dogImage.attr("data-state","still");  
+            dogImage.attr("data-still", results[i].images.fixed_height_still.url);
+            dogImage.attr("class","gif");
             gifDiv.prepend(p);
             gifDiv.prepend(dogImage);
 
