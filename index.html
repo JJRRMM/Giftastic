@@ -28,7 +28,8 @@
     <script>
     var dogbreed = ["Maltese","German Shepherd","bulldog","collie","chihuahua","poodle","beagle"];
 renderButtons();
-$("button").on("click", function() {
+// $("button").on("click", function() {
+$(document).on("click", "button", function(){  
       $("#dogs").empty(); 
       var breed = $(this).attr("data-name");
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -61,7 +62,7 @@ $("button").on("click", function() {
             // console.log(gifDiv);
             $("#dogs").prepend(gifDiv);
           }
-        });
+                  });
     });
 
     $(document).on("click", ".myimage", function (){
