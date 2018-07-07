@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    
 </head>
 <body>
     <div id="dogButtons"></div> 
@@ -17,9 +20,13 @@
         <!-- Button triggers new movie to be added -->
         <input id="add-breed" type="submit" value="Add a dog breed">
       </form>
-    <div id="dogs"></div>
+      <div class="wrapper">
+        <div class="conatiner">
+        <div class="row" id="dogs">
+            </div>
+    
     <script>
-     var dogbreed = ["Maltese","German Shepherd","bulldog","collie","chihuahua","poodle","beagle"];
+    var dogbreed = ["Maltese","German Shepherd","bulldog","collie","chihuahua","poodle","beagle"];
 renderButtons();
 $("button").on("click", function() {
       $("#dogs").empty(); 
@@ -43,24 +50,25 @@ $("button").on("click", function() {
 
             var dogImage = $("<img>");
             // dogImage.attr("src", "data-animate =" + results[i].images.fixed_height.url + "data-still=" + results[i].images.fixed_height_still.url);
-            dogImage.attr("src", results[i].images.fixed_height_still.url);
+            dogImage.attr("src", results[i].images.fixed_height.url);
             dogImage.attr("data-state", "animate");
             dogImage.attr("data-animate", results[i].images.fixed_height.url);
             dogImage.attr("data-state","still");  
             dogImage.attr("data-still", results[i].images.fixed_height_still.url);
-            dogImage.attr("class","gif");
+            dogImage.attr("class","myimage");
             gifDiv.prepend(p);
             gifDiv.prepend(dogImage);
-
+            // console.log(gifDiv);
             $("#dogs").prepend(gifDiv);
           }
         });
     });
 
-    $(".gif").on("click", function() {
+    $(document).on("click", ".myimage", function (){
+    // $(".myimage").on("click", function() {
+      // console.log("on was clicked");
       // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-      var state = $(this).attr("data-state");
-      
+      var state = $(this).attr("data-state");      
       // If the clicked image's state is still, update its src attribute to what its data-animate value is.
       // Then, set the image's data-state to animate
       // Else set src to the data-still value
@@ -94,6 +102,7 @@ for (var i = 0; i < dogbreed.length; i++) {
   $("#dogButtons").append(a);
 }
 }
+
 $("#add-breed").on("click", function(event) {
         event.preventDefault();
 
@@ -107,6 +116,7 @@ $("#add-breed").on("click", function(event) {
         // Calling renderButtons which handles the processing of our movie array
         renderButtons();
       });
+      
         </script>
 </body>
 </html>
